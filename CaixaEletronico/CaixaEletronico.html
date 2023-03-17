@@ -4,17 +4,16 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
 	<title>Banco</title>
 </head>
 <body>
 	<script>
-		var saldo = 100.5; //Float
-		var nome = prompt('Digite o seu nome:');
+		let saldo = 100.5; //Float
+		let nome = prompt('Digite o seu nome:');
 
 		function nome_us() {
 			if(nome == null || nome == "" || nome == " "){
-				alert('Digite um nome válido')
+				alert('Digite um nome válido:')
 				nome = prompt('Digite o seu nome:');
 				nome_us();
 			}else {
@@ -25,7 +24,7 @@
 		
 		function inicio() {
 	
-			var escolha = parseInt(prompt('Selecione uma opção 1.)Saldo 2.)Extrato 3.)Saque 4.)Depósito 5).transferência 6).Sair'));
+			let escolha = parseInt(prompt('Selecione uma opção 1.)Saldo 2.)Extrato 3.)Saque 4.)Depósito 5).transferência 6).Sair'));
 
 			switch(escolha){
 				case 1:
@@ -68,7 +67,7 @@
 		}
 
 		function fazer_deposito() {
-			var deposito = parseFloat(prompt('Qual o valor para depósito?'));
+			let deposito = parseFloat(prompt('Qual o valor para depósito?'));
 			// Not a Number
 			if (isNaN(deposito) || deposito === '') {
 				alert('Por favor, informe um número:');
@@ -84,7 +83,7 @@
 
 		function fazer_saque() {
 			senha();
-			var saque = parseFloat(prompt('Qual o valor para saque?'));
+			let saque = parseFloat(prompt('Qual o valor para saque?'));
 			if (isNaN(saque) || saque === '') {
 				alert('Por favor, informe um número:');
 				fazer_saque();
@@ -107,28 +106,28 @@
 
 		function fazer_transferencia() {
 			senha();
-			var num_cont = parseInt(prompt('informe o número da conta:'));
+			let num_cont = parseInt(prompt('informe o número da conta:'));
+			let valor_transf = prompt('Digite o valor da transferência:');
 
-			if (num_cont === num_cont) { 
-				var valor_transf = prompt('Digite o valor da transferencia');
-				alert('Sua transferencia foi feita com sucessso');
+			if (valor_transf <= saldo) { 
+				alert('Sua transferencia foi feita com sucessso!');
 				saldo -= valor_transf;
 				ver_saldo();
 				inicio();
 			}else {
-				alert('Digite apenas números');
+				alert('Saldo insuficiente');
 				fazer_transferencia();
 				
 			}
 		}
 		
 		function senha(){
-			var senha_fixa = 3589;
-			var dig_senha = parseInt(prompt('Digite a senha'));
+			let senha_fixa = 3589;
+			let dig_senha = parseInt(prompt('Digite a senha:'));
 			if(dig_senha === senha_fixa){
 				alert('Senha correta!');
 			}else{
-				alert('senha incorreta');
+				alert('senha incorreta!');
 				senha();
 			}
 		}
@@ -139,9 +138,9 @@
 		}
 
 		function sair() {
-			var confirma = confirm('Você deseja sair?');
+			let confirma = confirm('Você deseja sair?');
 			if (confirma) {
-				alert(nome + ' foi um prazer ter você por aqui');
+				alert(nome + ' foi um prazer ter você por aqui.');
 				window.close();
 			} else {
 				inicio();
